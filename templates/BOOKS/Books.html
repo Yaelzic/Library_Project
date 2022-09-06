@@ -1,0 +1,33 @@
+{%extends 'layout.html'%}
+{%block header%}{{super()}}{%endblock%}
+{%block content%}
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <form class="d-flex" action="/books/BOOKS/searchBook" method="POST">
+            <input class="form-control me-2" type="search" placeholder="Search Book" aria-label="Search" name="bookName">
+            <input type="submit" class="btn btn-outline-success" name="searchbook" value="Search">
+            
+        </form>
+    </div>
+</nav><br /><br />
+<A class="btn btn-success" href='/books/upbook'>Add new Book</a> <br /><br />
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for Book in Books %}
+    <div class="col">
+        <div class="card h-100">
+           <a href="{{  url_for('books.download_file', name=Book[2])}}"> <img src="/books/uploads/{{Book[1]}}" class="card-img-top"  alt="..."></a>
+            <div class="card-body">
+                <A class="btn btn-danger" href='/books/BOOKS/deleteBook/{{Book[0]}}'>Delete Book</a><br>
+                <h5 class="card-title">{{Book[2]}}</h5>
+                <p class="card-text"> </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">author: {{Book[3]}} -  year: {{Book[4]}} - type: {{Book[5]}}</small>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{%endblock%}
+{%block footer%}{{super()}}{%endblock%}

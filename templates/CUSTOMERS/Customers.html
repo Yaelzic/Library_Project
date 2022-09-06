@@ -1,0 +1,41 @@
+
+
+{%extends 'layout.html'%}
+{%block header%}{{super()}}{%endblock%}
+{%block content%}
+
+<div style="padding-top: 20px;">
+    <legend> <b>Customer:</b></legend><br />
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <form class="d-flex" action="/customers/CUSTOMERS/searchCust" method="POST">
+                <input class="form-control me-2" type="search" placeholder="Search Customer" aria-label="Search" name="custName">
+                <input type="submit" class="btn btn-outline-success" name="searchcust" value="Search">
+                
+            </form>
+        </div>
+    </nav><br /><br />
+
+    <A class="btn btn-success" href='/customers/CUSTOMERS/addCust'>Add new Customer</a>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Customer Id</th>
+            <th>Customer Name</th>
+            <th>Customer Age</th>
+        </tr>
+        {%for Customer in Customers %}
+        <tr>
+            <td>{{Customer[0]}}</td>
+            <td>{{Customer[1]}}</td>
+            <td>{{Customer[2]}}</td>
+            <td><A class="btn btn-danger" href='/customers/CUSTOMERS/deleteCust/{{Customer[0]}}'>Delete</a>
+            <A class="btn btn-danger" href='/loans/LOANS/CustLoans/{{Customer[0]}}'>Loans</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+
+{%endblock%}
+{%block footer%}{{super()}}{%endblock%}

@@ -1,0 +1,19 @@
+{%extends 'layout.html'%}
+{%block header%}{{super()}}{%endblock%}
+{%block content%}
+
+<title>Add New Book</title>
+<h1>Add New Book</h1>
+<form method=post enctype=multipart/form-data>
+    <div style="padding-top: 10px;">
+        <div><label>Img: <input type=file name=file></label></div><br /><br />
+        <div><label> Book Name: <input name=name></label></div><br /><br />
+        <div><label>Author: <input name=author></label></div><br /><br />
+        <div><label>Type: <input name=type></label></div><br /><br />
+        <div><label>Year Published: <input name=year></label></div><br /><br />
+        <input type=submit value='Add Book'><br /><br />
+    </div>
+</form>
+
+{%endblock%}
+{%block footer%}{{super()}}{%endblock%}
